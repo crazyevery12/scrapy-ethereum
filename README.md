@@ -1,5 +1,5 @@
 # scrapy-ethereum
-Crawling Ethereum makert-pair.
+Crawling Ethereum makert-pair using scrapy and selenium.
 ## Requirement:
 Install required package with the following command: **pip intall -r requirement.txt**.
 ## How to run:
