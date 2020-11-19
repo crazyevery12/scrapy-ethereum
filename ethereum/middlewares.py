@@ -74,23 +74,13 @@ class EtherumMiddleware(object):
         driver = webdriver.Chrome(r'C:\Users\tranv\Desktop\Python Project\chromedriver.exe', chrome_options=options)
         driver.set_window_size(1440, 800)
         driver.delete_all_cookies()
-        driver.get(url)
 
-        # select time
-        # time_xpath = (
-        #     ".//div["
-        #     "@class=\"table-tabs__list\""
-        #     "]/button[5]"
-        # )
-        # time_element = WebDriverWait(driver, 60).until(
-        #      EC.element_to_be_clickable((By.XPATH, time_xpath))
-        # )
-        # time_element.click()
-        # WebDriverWait(driver, 10)
-        # time.sleep(10)
+        #Scroll page
         for scroll in range(10):
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
             time.sleep(5)
+
+        driver.quit()
         return scrapy.http.HtmlResponse(url=url,
                                         status=200,
                                         body=json.dumps(data).encode('utf-8'),
