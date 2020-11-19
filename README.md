@@ -1,5 +1,6 @@
 # scrapy-ethereum
+Crawling Ethereum makert-pair.
 ## Requirement:
-Install required package with the following command: **pip intall -r requirement.txt**
+Install required package with the following command: **pip intall -r requirement.txt**.
 ## How to run:
-Enter this command in the terminal: **scrap crawl eth**
+Enter this command in the terminal: **scrap crawl eth**.
