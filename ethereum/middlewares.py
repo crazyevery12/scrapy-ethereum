@@ -1,7 +1,3 @@
-# Define here the models for your spider middleware
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -72,7 +68,6 @@ class EtherumMiddleware(object):
         # webdriver setting
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
-        #options.add_argument('--proxy-server=%s' % request.meta["proxy"])
         options.add_argument('--user-agent=%s' % request.headers["User-Agent"])
 
         # webdriver request
@@ -82,17 +77,20 @@ class EtherumMiddleware(object):
         driver.get(url)
 
         # select time
-        time_xpath = (
-            ".//div["
-            "@class=\"table-tabs__list\""
-            "]/button[5]"
-        )
-        time_element = WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.XPATH, time_xpath))
-        )
-        time_element.click()
-        time.sleep(5)
-
+        # time_xpath = (
+        #     ".//div["
+        #     "@class=\"table-tabs__list\""
+        #     "]/button[5]"
+        # )
+        # time_element = WebDriverWait(driver, 60).until(
+        #      EC.element_to_be_clickable((By.XPATH, time_xpath))
+        # )
+        # time_element.click()
+        # WebDriverWait(driver, 10)
+        # time.sleep(10)
+        for scroll in range(10):
+            driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+            time.sleep(5)
         return scrapy.http.HtmlResponse(url=url,
                                         status=200,
                                         body=json.dumps(data).encode('utf-8'),
